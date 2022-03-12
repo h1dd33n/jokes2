@@ -8,6 +8,7 @@
         <module>joke-web</module>
     </modules>
     <parent>
+        <!-- for some reason spring isn't seeing this -->
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.6.4</version>
@@ -28,6 +29,22 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
+        <!-- Not reading the dependency from <parent> -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>2.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -37,14 +54,14 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.6.4</version>
                 <configuration>
-                    <mainClass>/home/name/Desktop/Java Projects/jokes2/src/main/java/com/jokes/DemoApplication.java</mainClass>
+                    <mainClass>/home/name/Desktop/Java Projects/jokes2/joke-data/src/main/java/com/jokedata/JokeDataApplication.java</mainClass>
                     <!--                    <mainClass>com/example/jokes/JokesApplication.java</mainClass>-->
                     <addResources>true</addResources>
                     <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
+<!--                        <exclude>-->
+<!--                            <groupId>org.projectlombok</groupId>-->
+<!--                            <artifactId>lombok</artifactId>-->
+<!--                        </exclude>-->
                     </excludes>
                 </configuration>
             </plugin>
@@ -53,14 +70,18 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <goals>install</goals>
-                    <checkModificationExcludes>pom.xml</checkModificationExcludes>
+<!--                    <goals>install</goals>-->
+                    <checkModificationExcludes>
+                        <checkModificationExclude>
+                            pom.xml
+                        </checkModificationExclude>
+                    </checkModificationExcludes>
                 </configuration>
             </plugin>
         </plugins>
     </build>
     <scm>
-        <developerConnection>scm:git:git@github.com:h1dd33n/jokes.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:h1dd33n/jokes2.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
